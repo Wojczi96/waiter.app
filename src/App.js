@@ -1,11 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { Container } from 'react-bootstrap';
+import Header from './components/views/Header/Header';
+import { Routers } from 'react-router-dom';
 
 function App() {
   return (
-    <div>
-      Hello World
-    </div>
+    <Container>
+      <Header />
+      <Routers>
+
+      </Routers>
+      <Footer />
+    </Container>
   );
 }
 
