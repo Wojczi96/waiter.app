@@ -10,7 +10,6 @@ import { fetchTables } from './redux/tableRedux';
 import SingleTableDetails from './components/pages/SingleTableDetails/SingleTableDetails';
 
 function App() {
-
   const dispatch = useDispatch();
   useEffect(() => {dispatch(fetchTables())}, [dispatch]);
 
