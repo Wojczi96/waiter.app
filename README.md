@@ -1,2 +1,2 @@
 Link do strony :
-https://eaa977da-86b2-470e-a5aa-45bc62576b31-00-5b75yujvf8s4.spock.replit.dev/
+https://086d46f3-1f67-44e2-b72d-60acd4d94ce5-00-3mb9c1zcnwle6.janeway.replit.dev/
