@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 const TableOverview = props => {
 
   const singleTableData = useSelector(state => getTableById(state, props.id));
-  const [id] = useState(singleTableData?.id || 0);
+  const [id] = useState(singleTableData.id);
   const [status] = useState(singleTableData.status);
 
   return (
@@ -17,7 +17,7 @@ const TableOverview = props => {
         <Row className="col-12 d-flex align-items-between justify-content-between mb-2">
           <Col className="col-9 d-flex flex-row align-items-center justify-content-start">
             <Col className="col-2">
-              <h4>Table {id || 'N/A'}</h4>
+              <h4>Table {id}</h4>
             </Col>
             <Col className="col-2 d-flex flex-row align-items-center justify-content-center">
               <h5>{status}</h5>
