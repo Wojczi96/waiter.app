@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../config.js'
 
 //selectors
@@ -27,6 +28,7 @@ export const fetchTables = () => {
 
 export const addTableRequest = newTable => {
   return (dispatch) => {
+    const navigate = useNavigate();
     const options = {
       method: 'POST',
       headers: {
@@ -35,12 +37,18 @@ export const addTableRequest = newTable => {
       body: JSON.stringify(newTable),
     };
     fetch(`${API_URL}/tables`, options)
-      .then(() => dispatch(addTable(newTable)))
+      .then(() => { dispatch(addTable(newTable))
+      navigate(`${API_URL}/tables`);
+      })
+      .catch(error => {
+        console.error("An error occurred while editing the table:", error)
+      });
   }
 };
 
 export const removeTableRequest = tableId => {
   return (dispatch) => {
+    const navigate = useNavigate();
     const options = {
       method: 'DELETE',
       headers: {
@@ -48,12 +56,18 @@ export const removeTableRequest = tableId => {
       },
     };
     fetch(`${API_URL}/tables/${tableId.toString()}`, options)
-      .then(() => dispatch(removeTable(tableId)));
+      .then(() => { dispatch(removeTable(tableId));
+      navigate(`${API_URL}/tables`);
+      })
+      .catch(error => {
+        console.error("An error occurred while editing the table:", error)
+      });
   }
 };
 
 export const editTableRequest = thisTable => {
   return (dispatch) => {
+    const navigate = useNavigate();
     const options = {
       method: "PUT",
       headers: {
@@ -62,7 +76,12 @@ export const editTableRequest = thisTable => {
       body: JSON.stringify(thisTable),
     };
     fetch(`${API_URL}/tables/${thisTable.id}`, options)
-      .then(() => dispatch(editTable(thisTable.id)));
+      .then(() => { dispatch(editTable(thisTable.id));
+      navigate(`${API_URL}/tables`);
+    })
+    .catch(error => {
+      console.error("An error occurred while editing the table:", error)
+    });
   };
 };
 
