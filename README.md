@@ -1,2 +1,2 @@
 Link do strony :
-https://0c84b446-8679-4ef6-a8bc-546e527822a8-00-2e1gfcxwe88tx.picard.replit.dev/
+https://eaa977da-86b2-470e-a5aa-45bc62576b31-00-5b75yujvf8s4.spock.replit.dev/

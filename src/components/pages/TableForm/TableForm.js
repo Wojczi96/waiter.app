@@ -10,7 +10,6 @@ const TableForm = () => {
   const navigate = useNavigate();
   const tables = useSelector(getAllTables);
   const [newTableId, setNewTableId] = useState("");
-  let tableOKtoAdd = true;
 
   const handleAddTable = event => {
     event.preventDefault();
@@ -21,21 +20,29 @@ const TableForm = () => {
       maxPeopleAmount: 4,
       bill: 0
     };
-    if (newTable.id > 10) {
-      alert('WE HAVE ONLY 10 TABLES');
-      tableOKtoAdd = false;
-    };
-    for (let table of tables) {
-      if (table.id === newTable.id) {
-          alert(`TABLE ${newTable.id} ALREADY EXISTS`);
-          tableOKtoAdd = false;
-          break;
-      }
-    };
-    if (tableOKtoAdd) {
-      dispatch(addTableRequest(newTable, navigate));
-    };
+  //   if (newTable.id > 10) {
+  //     alert('WE HAVE ONLY 10 TABLES');
+  //     tableOKtoAdd = false;
+  //   };
+  //   for (let table of tables) {
+  //     if (table.id === newTable.id) {
+  //         alert(`TABLE ${newTable.id} ALREADY EXISTS`);
+  //         tableOKtoAdd = false;
+  //         break;
+  //     }
+  //   };
+  //   if (tableOKtoAdd) {
+  //     dispatch(addTableRequest(newTable, navigate));
+  //   };
+  // }
+  if (newTable.id > 10) {
+    alert('WE HAVE ONLY 10 TABLES');
+  } else if (tables.some(table => table.id === newTable.id)) {
+    alert(`TABLE ${newTable.id} ALREADY EXISTS`);
+  } else {
+    dispatch(addTableRequest(newTable, navigate));
   }
+};
 
   return (
     <div className="col-12 d-flex flex-column justify-content-center align-items-center gap-2">
