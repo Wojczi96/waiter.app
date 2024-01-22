@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 const TableOverview = props => {
 
   const singleTableData = useSelector(state => getTableById(state, props.id));
-  const [id] = useState(singleTableData.id);
+  const [id] = useState(singleTableData?.id || 0);
   const [status] = useState(singleTableData.status);
 
   return (
