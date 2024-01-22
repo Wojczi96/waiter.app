@@ -38,7 +38,7 @@ export const addTableRequest = newTable => {
     };
     fetch(`${API_URL}/tables`, options)
       .then(() => { dispatch(addTable(newTable))
-      navigate(`${API_URL}/tables`);
+      navigate(`${API_URL}/`);
       })
       .catch(error => {
         console.error("An error occurred while editing the table:", error)
@@ -57,7 +57,7 @@ export const removeTableRequest = tableId => {
     };
     fetch(`${API_URL}/tables/${tableId.toString()}`, options)
       .then(() => { dispatch(removeTable(tableId));
-      navigate(`${API_URL}/tables`);
+      navigate(`${API_URL}/`);
       })
       .catch(error => {
         console.error("An error occurred while editing the table:", error)
@@ -77,7 +77,7 @@ export const editTableRequest = thisTable => {
     };
     fetch(`${API_URL}/tables/${thisTable.id}`, options)
       .then(() => { dispatch(editTable(thisTable.id));
-      navigate(`${API_URL}/tables`);
+      navigate(`${API_URL}/`);
     })
     .catch(error => {
       console.error("An error occurred while editing the table:", error)
