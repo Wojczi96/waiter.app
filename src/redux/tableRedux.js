@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+
 import { API_URL } from '../config.js'
 
 //selectors
@@ -26,9 +26,8 @@ export const fetchTables = () => {
   }
 };
 
-export const addTableRequest = newTable => {
+export const addTableRequest = (newTable, navigate) => {
   return (dispatch) => {
-    const navigate = useNavigate();
     const options = {
       method: 'POST',
       headers: {
@@ -38,7 +37,7 @@ export const addTableRequest = newTable => {
     };
     fetch(`${API_URL}/tables`, options)
       .then(() => { dispatch(addTable(newTable))
-      navigate(`${API_URL}/`);
+      navigate('/');
       })
       .catch(error => {
         console.error("An error occurred while editing the table:", error)
@@ -46,9 +45,8 @@ export const addTableRequest = newTable => {
   }
 };
 
-export const removeTableRequest = tableId => {
+export const removeTableRequest = (tableId, navigate) => {
   return (dispatch) => {
-    const navigate = useNavigate();
     const options = {
       method: 'DELETE',
       headers: {
@@ -57,7 +55,7 @@ export const removeTableRequest = tableId => {
     };
     fetch(`${API_URL}/tables/${tableId.toString()}`, options)
       .then(() => { dispatch(removeTable(tableId));
-      navigate(`${API_URL}/`);
+      navigate('/');
       })
       .catch(error => {
         console.error("An error occurred while editing the table:", error)
@@ -65,9 +63,8 @@ export const removeTableRequest = tableId => {
   }
 };
 
-export const editTableRequest = thisTable => {
+export const editTableRequest = (thisTable, navigate) => {
   return (dispatch) => {
-    const navigate = useNavigate();
     const options = {
       method: "PUT",
       headers: {
@@ -77,7 +74,7 @@ export const editTableRequest = thisTable => {
     };
     fetch(`${API_URL}/tables/${thisTable.id}`, options)
       .then(() => { dispatch(editTable(thisTable.id));
-      navigate(`${API_URL}/`);
+      navigate('/');
     })
     .catch(error => {
       console.error("An error occurred while editing the table:", error)

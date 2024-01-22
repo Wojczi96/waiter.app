@@ -41,14 +41,12 @@ const SingleTableForm = () => {
       thisTable.peopleAmount = 0;
       thisTable.maxPeopleAmount = 0;
     };
-    dispatch(editTableRequest(thisTable));
-    navigate('/');
+    dispatch(editTableRequest(thisTable, navigate));
   };
 
   const handleRemoveTable = event => {
     event.preventDefault();
-    dispatch(removeTableRequest(id));
-    navigate('/');
+    dispatch(removeTableRequest(id, navigate));
   };
 
   useEffect(() => {

@@ -33,8 +33,7 @@ const TableForm = () => {
       }
     };
     if (tableOKtoAdd) {
-      dispatch(addTableRequest(newTable));
-      navigate('/');
+      dispatch(addTableRequest(newTable, navigate));
     };
   }
 
